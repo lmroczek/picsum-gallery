@@ -15,7 +15,7 @@ const ImageGallery = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("https://picsum.photos/v2/list")
+    fetch("https://picsum.photos/v2/list?limit=36")
       .then((response) => {
         if (!response.ok) throw new Error("Failed to fetch images");
         return response.json();
@@ -33,10 +33,10 @@ const ImageGallery = () => {
   }
 
   return (
-    <div>
+    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {images.map((image) => (
-        <div key={image.id}>
-          <img src={image.download_url} alt={image.author} />
+        <div key={image.id} className="aspect-square w-full overflow-hidden">
+          <img className="h-full w-full object-cover" src={image.download_url} alt={image.author} />
         </div>
       ))}
     </div>
