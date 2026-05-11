@@ -2,9 +2,9 @@ import ImageGallery from "./components/ImageGallery";
 
 function App() {
   return (
-    <div>
+    <div className="space-y-8 py-8">
       <header>
-        <h1 className="text-3xl font-bold text-center">Picsum Image Gallery</h1>
+        <h1 className="font-serif text-3xl md:text-4xl font-normal text-center">Picsum Image Gallery</h1>
       </header>
       <main>
         <ImageGallery />

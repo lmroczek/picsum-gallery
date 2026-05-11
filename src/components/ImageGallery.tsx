@@ -26,10 +26,10 @@ const ImageGallery = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <p className="py-16 text-center text-gray-500">Loading...</p>;
   }
   if (error) {
-    return <div>Error: {error}</div>;
+    return <p className="py-16 text-center text-red-500">Error: {error}</p>;
   }
 
   return (
