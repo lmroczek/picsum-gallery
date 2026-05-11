@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import ImageGallery from "./components/ImageGallery";
 import ImageDetail from "./components/ImageDetail";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ImageGallery />} />
           <Route path="/image/:id" element={<ImageDetail />} />
+          <Route path="*" element={<NotFound />} />,
         </Routes>
       </main>
     </div>
