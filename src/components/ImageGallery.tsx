@@ -16,7 +16,10 @@ const ImageGallery = () => {
 
   useEffect(() => {
     fetch("https://picsum.photos/v2/list")
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to fetch images");
+        return response.json();
+      })
       .then((data) => setImages(data))
       .catch((error) => setError(error.message))
       .finally(() => setLoading(false));
