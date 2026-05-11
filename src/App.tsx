@@ -1,4 +1,6 @@
+import { Routes, Route } from 'react-router-dom';
 import ImageGallery from "./components/ImageGallery";
+import ImageDetail from "./components/ImageDetail";
 
 function App() {
   return (
@@ -7,7 +9,10 @@ function App() {
         <h1 className="font-serif text-3xl md:text-4xl font-normal text-center">Picsum Image Gallery</h1>
       </header>
       <main>
-        <ImageGallery />
+        <Routes>
+          <Route path="/" element={<ImageGallery />} />
+          <Route path="/image/:id" element={<ImageDetail />} />
+        </Routes>
       </main>
     </div>
   );

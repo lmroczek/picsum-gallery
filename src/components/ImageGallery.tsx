@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
-
-interface PicsumImage {
-  id: string;
-  author: string;
-  width: number;
-  height: number;
-  url: string;
-  download_url: string;
-}
+import { Link } from "react-router-dom";
+import type{ PicsumImage } from "../types/picsum";
 
 const LIMIT = 36;
 const picsumThumbSrc = (id: string, size = 400) =>
@@ -39,9 +32,17 @@ const ImageGallery = () => {
   return (
     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {images.map((image) => (
-        <div key={image.id} className="aspect-square w-full overflow-hidden">
-          <img className="h-full w-full object-cover" src={picsumThumbSrc(image.id)} alt={image.author} />
-        </div>
+        <Link
+          className="aspect-square w-full overflow-hidden"
+          key={image.id}
+          to={`/image/${image.id}`}
+        >
+          <img
+            className="h-full w-full object-cover"
+            src={picsumThumbSrc(image.id)}
+            alt={image.author}
+          />
+        </Link>
       ))}
     </div>
   );
