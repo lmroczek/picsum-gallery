@@ -9,13 +9,17 @@ interface PicsumImage {
   download_url: string;
 }
 
+const LIMIT = 36;
+const picsumThumbSrc = (id: string, size = 400) =>
+  `https://picsum.photos/id/${id}/${size}/${size}`;
+
 const ImageGallery = () => {
   const [images, setImages] = useState<PicsumImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("https://picsum.photos/v2/list?limit=36")
+    fetch(`https://picsum.photos/v2/list?limit=${LIMIT}`)
       .then((response) => {
         if (!response.ok) throw new Error("Failed to fetch images");
         return response.json();
@@ -36,7 +40,7 @@ const ImageGallery = () => {
     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {images.map((image) => (
         <div key={image.id} className="aspect-square w-full overflow-hidden">
-          <img className="h-full w-full object-cover" src={image.download_url} alt={image.author} />
+          <img className="h-full w-full object-cover" src={picsumThumbSrc(image.id)} alt={image.author} />
         </div>
       ))}
     </div>
