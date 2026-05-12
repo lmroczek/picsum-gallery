@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { PicsumImage } from "../types/picsum";
+import { useSearchParams } from "react-router-dom";
 
 const LIMIT = 36;
 const picsumThumbSrc = (id: string, size = 400) =>
@@ -10,9 +11,12 @@ const ImageGallery = () => {
   const [images, setImages] = useState<PicsumImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const limit = searchParams.get("limit") || LIMIT;
 
   useEffect(() => {
-    fetch(`https://picsum.photos/v2/list?limit=${LIMIT}`)
+    fetch(`https://picsum.photos/v2/list?limit=${limit}`)
       .then((response) => {
         if (!response.ok) throw new Error("Failed to fetch images");
         return response.json();
