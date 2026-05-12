@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ImageGallery />} />
           <Route path="/image/:id" element={<ImageDetail />} />
-          <Route path="*" element={<NotFound />} />,
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>

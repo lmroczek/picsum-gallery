@@ -34,9 +34,10 @@ const ImageGallery = () => {
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {images.map((image) => (
           <Link
-            className="aspect-square w-full overflow-hidden"
+            className="aspect-square w-full overflow-hidden rounded-lg"
             key={image.id}
             to={`/image/${image.id}`}
+            title={`Photo by ${image.author}`}
           >
             <img
               className="h-full w-full object-cover"
